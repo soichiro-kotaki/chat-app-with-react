@@ -68,6 +68,13 @@ export default function SignIn({setName}) {
             autoFocus
             value={string}
             onChange={(e) => {setString(e.target.value)}}
+            onKeyDown={(e) => {
+                //プリベントデフォルトは、その要素が持つ全ての初期イベントを抑止してしまうので、条件分岐などで制御したいイベントを指定する。
+                if (e.key === "Enter") {
+                    setName(e.target.value);
+                    e.preventDefault();
+                }
+            }}
           />
           <Button
             disabled={disabled}
