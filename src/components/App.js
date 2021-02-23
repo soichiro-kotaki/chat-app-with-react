@@ -3,7 +3,7 @@ import SignIn from "./SignIn";
 import Main from "./Main";
 import config from "../config.json"
 
-export default () => {
+ const App = () => {
     const [name, setName] = useState("");
 
     if (name === '' && config.signInAbled) {
@@ -12,3 +12,4 @@ export default () => {
         return <Main name={name} />
     };
 };
+export default App;
