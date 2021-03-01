@@ -71,11 +71,9 @@ export default function SignIn({setName}) {
             onChange={(e) => {setString(e.target.value)}}
             onCompositionStart={() => {
                 setIsComposed(true);
-                console.log('start')
             }}
             onCompositionEnd={() => {
                 setIsComposed(false);
-                console.log({isComposed})
             }}
             onKeyDown={(e) => {
                 //編集中のstate変数（isComposed)がtrueの場合は、onKeyDownのenterキークリックによる処理をを発火させない。

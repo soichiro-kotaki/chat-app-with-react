@@ -12,11 +12,18 @@ const useStyles = makeStyles({
     }
 });
 
-const MessageInputField = ({name}) => {
+const MessageInputField = ({ name }) => {
     const inputEL = useRef(null);
     const [text, setText] = useState('');
+    const [time, setTime] = useState('');
     const classes = useStyles();
     const avatarPath = gravatarPath(name);
+
+    const showTime = () => {
+        let setMessageTime = new Date();
+        const timeOfMessage = `${setMessageTime.getMonth()+1}月${setMessageTime.getDate()}日  ${setMessageTime.getHours()}時${setMessageTime.getMinutes()}分`;
+        setTime(timeOfMessage);
+    };
 
     return (
         <div className={classes.root}>
@@ -30,6 +37,9 @@ const MessageInputField = ({name}) => {
                         setText={setText}
                         text={text}
                         inputEL={inputEL}
+                        time={time}
+                        setTime={setTime}
+                        showTime={showTime}
                     />
                 </Grid>
                 <Grid item xs={1}>
@@ -38,11 +48,14 @@ const MessageInputField = ({name}) => {
                         setText={setText}
                         text={text}
                         inputEL={inputEL}
+                        time={time}
+                        setTime={setTime}
+                        showTime={showTime}
                     />
                 </Grid>
            </Grid>
         </div>
-    )
+    );
 };
 
 export default MessageInputField;

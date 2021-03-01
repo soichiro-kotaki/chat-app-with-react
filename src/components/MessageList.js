@@ -17,15 +17,15 @@ const MessageList = () => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        messagesRef.orderByKey().limitToLast(10).on('value', (snapshot) => {
+        messagesRef.orderByKey().limitToLast(15).on('value', (snapshot) => {
             const messages = snapshot.val();
             if (messages === null) return;
 
             const entries = Object.entries(messages);
             const newMessages = entries.map((entry) => {
-                const [key, nameAndText] = entry;
+                const [key, nameAndTextAndTime] = entry;
 
-                return {key, ...nameAndText};
+                return {key, ...nameAndTextAndTime};
             });
             setMessages(newMessages);
         });
@@ -36,9 +36,9 @@ const MessageList = () => {
     return (
         <List className={classes.root}>
             {
-                messages.map(({ key, name, text }, index) => {
+                messages.map(({ key, name, text, time }, index) => {
                     const isLastItem = length === index + 1;
-                    return <MessageItem name={name} text={text} key={key} isLastItem={isLastItem}/>
+                    return <MessageItem name={name} text={text} key={key} isLastItem={isLastItem} time={time} />
                 })
             }
         </List>

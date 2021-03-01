@@ -3,13 +3,21 @@ import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography } from '@mat
 import { makeStyles } from '@material-ui/core/styles';
 import { gravatarPath } from '../gravatar';
 
+
+
 const useStyles = makeStyles(() => ({
     inline: {
         display: 'inline',
+    },
+    button: {
+        marginLeft: '50px'
+    },
+    multiline: {
+        color: 'black'
     }
 }));
 
-const MessageItem = ({ name, text, isLastItem }) => {
+const MessageItem = ({ name, text, isLastItem, time, postKey}) => {
     const ref = useRef(null)
     const classes = useStyles();
     const avatarPath = gravatarPath(name);
@@ -22,23 +30,25 @@ const MessageItem = ({ name, text, isLastItem }) => {
 
     return (
         <ListItem divider={true} ref={ref}>
-        <ListItemAvatar>
-          <Avatar src={avatarPath} />
-        </ListItemAvatar>
-        <ListItemText
-            primary={name}
-            secondary={
-                <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                >
-                {text}
-                </Typography>
-            }
-        />
-      </ListItem>
+            <ListItemAvatar>
+            <Avatar src={avatarPath} />
+            </ListItemAvatar>
+            <ListItemText
+                primary={name}
+                className={classes.multiline}
+                secondary={
+                    <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                    >
+                    {text}
+                    </Typography>
+                }
+            />
+            <p>{time}</p>
+        </ListItem>
     );
 };
 
