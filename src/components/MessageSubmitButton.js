@@ -6,7 +6,7 @@ import { pushMessage } from '../firebase';
 const MessageSubmitButton = ({ name, setText, text, inputEL }) =>  {
     return (
          <IconButton disabled={text === ''} onClick={() => {
-             pushMessage({ name: 'コタキん', text });
+             pushMessage({ name, text });
              inputEL.current.focus();
              setText('');
          }}>

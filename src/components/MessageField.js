@@ -26,7 +26,7 @@ const MessageField = ({name, setText, text, inputEL}) => {
                 if (text === '') return;
                 //プリベントデフォルトは、その要素が持つ全ての初期イベントを抑止してしまうので、条件分岐などで制御したいイベントを指定する。
                 if (e.key === "Enter") {
-                    pushMessage({name: 'kotakin', text});
+                    pushMessage({name, text});
                     inputEL.current.focus();
                     setText('');
                     e.preventDefault();
