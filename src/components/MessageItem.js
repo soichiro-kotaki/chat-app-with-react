@@ -9,15 +9,9 @@ const useStyles = makeStyles(() => ({
     inline: {
         display: 'inline',
     },
-    button: {
-        marginLeft: '50px'
-    },
-    multiline: {
-        color: 'black'
-    }
 }));
 
-const MessageItem = ({ name, text, isLastItem, time, postKey}) => {
+const MessageItem = ({ name, text, isLastItem, time}) => {
     const ref = useRef(null)
     const classes = useStyles();
     const avatarPath = gravatarPath(name);
@@ -35,7 +29,6 @@ const MessageItem = ({ name, text, isLastItem, time, postKey}) => {
             </ListItemAvatar>
             <ListItemText
                 primary={name}
-                className={classes.multiline}
                 secondary={
                     <Typography
                         component="span"
@@ -44,10 +37,10 @@ const MessageItem = ({ name, text, isLastItem, time, postKey}) => {
                         color="textPrimary"
                     >
                     {text}
+                    <p>{time}</p>
                     </Typography>
                 }
             />
-            <p>{time}</p>
         </ListItem>
     );
 };

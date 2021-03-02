@@ -57,5 +57,4 @@ const MessageInputField = ({ name }) => {
         </div>
     );
 };
-
 export default MessageInputField;
